@@ -1,64 +1,21 @@
-import React, {useState} from "react";
 import {Button, TextField,Snackbar,  Card, CardHeader, Divider, Grid, Typography} from "@material-ui/core";
-import {db} from './firebase'
 import MuiAlert from '@material-ui/lab/Alert';
 
 
 export default function Content(){
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [open, setOpen] = useState(false)
 
 
-
-    const handleClose = (e, reason) =>{
-        if (reason === 'clickaway'){
-            return(
-                console.log("working")
-            )
-        }
-        setOpen(false)
-    }
-
-    function Alert(props) {
-        return <MuiAlert elevation={6} variant='filled' {...props} />;
-    }
-
-    const onSubmitHandler = (e) =>{
-        e.preventDefault()
-        db.collection('contact').add({
-            name: name,
-            email:email,
-            message :message,
-        })
-            .then(() => {
-                setOpen(true);
-            })
-            .catch((error) =>{
-                alert(error.message)
-            })
-
-        setName("")
-        setEmail("")
-        setMessage("")
-
-    }
-
-    function Alert(props) {
-        return <MuiAlert elevation={6} variant='filled' {...props} />;
-    }
         return(
             <>
                 <Grid container>
                     <Grid item xs={12} lg={8}>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} lg={3}>
 
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} lg={6}>
                             MESSAGE
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} lg={3}>
 
                         </Grid>
                         <Grid item xs={12} >
@@ -114,7 +71,7 @@ export default function Content(){
                                 variant='outlined'
                                 autoComplete='new-name'
                                 fullWidth
-                                value={name}
+                                value='name'
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </Grid>
@@ -128,7 +85,7 @@ export default function Content(){
                                 variant='outlined'
                                 autoComplete='new-email'
                                 fullWidth
-                                value={email}
+                                value="email"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </Grid>
@@ -142,7 +99,7 @@ export default function Content(){
                                 fullWidth
                                 multiline
                                 rows={4}
-                                value={message}
+                                value="message"
                                 variant='outlined'
                                 onChange={(e) => setMessage(e.target.value)}
                             />
@@ -162,11 +119,6 @@ export default function Content(){
                         </Grid>
                     </Grid>
                 </Grid>
-                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity='success'>
-                        message submitted successfully!
-                    </Alert>
-                </Snackbar>
             </>
         );
 }

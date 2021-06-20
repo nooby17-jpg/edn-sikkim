@@ -16,6 +16,7 @@ import Guidelines from "./Components/Guidelines/Guidelines";
 import Success from "./Components/Success/Success";
 import RegularForm from "./Components/RegularForm/RegularForm";
 import PolytechnicForm from "./Components/PolytechnicForm/PolytechnicForm";
+import Content from "./Components/Content/Content";
 
 
 
@@ -133,7 +134,8 @@ function App() {
             </Toolbar>
           </AppBar>
         <RouteSwitch>
-          <Route path="/" exact component={Guidelines}/>
+          <Route path="/" exact component={Content}/>
+          <Route path="/notice"  component={Guidelines}/>
           <Route path="/niosform"  component={NiosForm}/>
           <Route path="/regularform"  component={RegularForm}/>
           <Route path="/polytechnicform"  component={PolytechnicForm}/>
