@@ -1,0 +1,112 @@
+body{
+    font-family:'Merriweather', serif;
+}
+.paper{
+    margin: auto;
+    max-width: 500px;
+    padding: 20px !important;
+}
+
+.succesCard{
+    margin: auto;
+    max-width: 500px;
+    background: #d8d8d8;
+    padding: 20px !important;
+}
+
+
+/*CSS FOR BREAD CRUMBS*/
+
+.breadcrumbAlign{
+    display: flex;
+    margin-top: 100px !important;
+    margin-bottom: 20px !important;
+}
+.BreadcrumbsIcon{
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+.BreadcrumbsLink{
+    display: flex;
+    font-family: 'Montserrat', serif;
+    font-size: 16px;
+}
+
+
+.NavLink{
+    padding: 10px 00px;
+}
+.footer{
+    margin-top: 50px !important;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px !important;
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+    background: #060a10;
+    color: #d4d6d8;
+    font-weight: 300;
+}
+.MuiCardHeader-title{
+ font-family: 'Oswald', sans-serif ;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+
+}
+.bolds{
+    text-decoration: none !important;
+    font-family: "Oswald", sans-serif;
+    color:#d4d6d8 !important;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition:all 0.3s ease-in-out;
+}
+.bolds:hover{
+    text-decoration: none !important;
+    color:#08d75f !important;
+    font-weight: 900;
+    transition:all 0.3s ease-in-out;
+}
+
+
+.containerAlign{
+    margin-top: 120px !important;
+}
+/*Form CSS*/
+.formHeading{
+    text-align: center;
+    color: #0473ad !important;
+}
+/*Admission link Button group*/
+.buttonGroup{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-column-gap: 20px !important;
+}
+
+/*MEDIA QUERRIES*/
+@media screen and (max-width: 580px){
+    .breadcrumbAlign{
+        margin-top: 100px !important;
+    }
+    .BreadcrumbsIcon{
+
+        width: 17px !important;
+        height: 17px !important;
+    }
+    .BreadcrumbsLink{
+        font-size: 13px !important;
+    }
+    .paper{
+        max-width: 310px;
+    }
+    .succesCard{
+        max-width: 310px;
+    }
+
+    .App {
+        margin-bottom: 120px;
+    }
+}
