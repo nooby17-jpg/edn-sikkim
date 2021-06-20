@@ -82,7 +82,8 @@ body{
 /*Admission link Button group*/
 .buttonGroup{
     display: grid !important;
-    grid-template-columns: 1fr !important;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr !important;
     grid-column-gap: 20px !important;
 }
 
@@ -108,5 +109,10 @@ body{
 
     .App {
         margin-bottom: 120px;
+    }
+    .buttonGroup{
+        display: grid !important;
+        grid-template-columns: 1fr!important;
+        grid-row-gap: 20px !important;
     }
 }
