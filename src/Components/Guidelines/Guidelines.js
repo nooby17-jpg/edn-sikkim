@@ -107,37 +107,61 @@ export default function  Guidelines(){
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText>
+                                        Filling up the application form does not confirm your admission in opted Streams.
+                                    </ListItemText>
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText >
+                                        Those students who have passed class X from Senior Secondary School must apply in their respective schools only.
+                                    </ListItemText>
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText>
+                                        Those students who have passed class X from Senior Secondary School can apply to other nearby Senior Secondary
+                                        Schools if their preferred Streams are not available at home schools.
+                                    </ListItemText>
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText >
+                                        Students must enter the correct information in the application form.
+                                    </ListItemText>
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText>
+                                        Admission in Science & Commerce Streams shall be as per the criteria laid down by the respective schools.
+                                        Preference for admission shall be given to the feeder schools & the other schools in the surrounding
+                                        depending upon the availability of seats.
+                                    </ListItemText>
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <ArrowRightRounded />
                                     </ListItemIcon>
-                                    <ListItemText >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</ListItemText>
+                                    <ListItemText >
+                                        Compartment candidates of Senior Secondary Schools can apply for provisional admission in their own schools.
+                                        The students of Secondary Schools can apply at nearby school; however, the school will have the final decision.
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <ArrowRightRounded />
+                                    </ListItemIcon>
+                                    <ListItemText >
+                                        The decision of the admission committee of the respective school will be final.
+                                    </ListItemText>
                                 </ListItem>
                             </List>
                         </Paper>

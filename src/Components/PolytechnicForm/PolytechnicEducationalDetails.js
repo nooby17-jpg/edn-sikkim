@@ -42,7 +42,7 @@ export class PolytechnicEducationalDetails extends Component {
                         </Breadcrumbs>
                     </div>
                     <Paper  className="paper">
-                        <Typography color="secondary" variant="h5" className="formHeading">NIOS Educational details</Typography>
+                        <Typography color="secondary" variant="h5" className="formHeading">Polytechnic Educational details</Typography>
                         <br/>
                         <br/>
                         <TextField

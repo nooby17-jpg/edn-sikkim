@@ -85,8 +85,12 @@ body{
     padding: 10px;
     grid-template-columns: 1fr 1fr 1fr !important;
     grid-column-gap: 20px !important;
+    grid-row-gap: 20px !important;
 }
-
+.footerlist{
+    padding: 10px ;
+    font-weight: 500;
+}
 /*MEDIA QUERRIES*/
 @media screen and (max-width: 580px){
     .breadcrumbAlign{
@@ -114,5 +118,8 @@ body{
         display: grid !important;
         grid-template-columns: 1fr!important;
         grid-row-gap: 20px !important;
+    }
+    .formHeading{
+        font-size: 24px !important;
     }
 }

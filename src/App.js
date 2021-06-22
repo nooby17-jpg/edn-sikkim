@@ -17,6 +17,11 @@ import Success from "./Components/Success/Success";
 import RegularForm from "./Components/RegularForm/RegularForm";
 import PolytechnicForm from "./Components/PolytechnicForm/PolytechnicForm";
 import Content from "./Components/Content/Content";
+import EastSchoolList from "./Components/SchoolList/EastSchoolList";
+import WestSchoolList from "./Components/SchoolList/WestSchoolList";
+import SouthSchoolList from "./Components/SchoolList/SouthSchoolList";
+import NorthSchoolList from "./Components/SchoolList/NorthSchoolList";
+import CheckYourReg from "./Components/CheckYourReg/CheckYourReg";
 
 
 
@@ -82,7 +87,7 @@ function App() {
 
   const [darkState, setDarkState] = useState(false);
   const palletType = darkState ? "dark" : "light";
-  const mainPrimaryColor = darkState ? "#4a5863" : "#0b99e4";
+  const mainPrimaryColor = darkState ? "#4a5863" : "#0d66a4";
   const mainSecondaryColor = darkState ? "#ececec" : "#202020";
   const darkTheme = createMuiTheme({
     palette: {
@@ -139,6 +144,11 @@ function App() {
           <Route path="/niosform"  component={NiosForm}/>
           <Route path="/regularform"  component={RegularForm}/>
           <Route path="/polytechnicform"  component={PolytechnicForm}/>
+          <Route path="/eastschoollist"  component={EastSchoolList}/>
+          <Route path="/westschoollist"  component={WestSchoolList}/>
+          <Route path="/southschoollist"  component={SouthSchoolList}/>
+          <Route path="/northschoollist"  component={NorthSchoolList}/>
+          <Route path="/searchstudent"  component={CheckYourReg}/>
           <Route path="/success"  component={Success}/>
         </RouteSwitch>
         <Footer/>

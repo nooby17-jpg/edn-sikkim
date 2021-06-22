@@ -35,6 +35,42 @@ export default class NiosForm extends Component {
         subject7:'',
         marks7:'',
     };
+    handleSubmit(e) {
+        e.preventDefault();
+
+        let dataObj = {
+            district : this.state.district,
+            institution:this.state.institution,
+            course : this.state.course,
+            passing_year:this.state.passing_year,
+            board : this.state.board,
+            prev_school:this.state.prev_school,
+            student_name : this.state.student_name,
+            father_name:this.state.father_name,
+            roll_number : this.state.roll_number,
+            Aadhaar_number:this.state.Aadhaar_number,
+            parent_mobile : this.state.parent_mobile,
+            student_mobile:this.state.student_mobile,
+            email : this.state.email,
+            subject1:this.state.subject1,
+            subject2 : this.state.subject2,
+            subject3:this.state.subject3,
+            subject4 : this.state.subject4,
+            subject5:this.state.subject5,
+            subject6 : this.state.subject6,
+            subject7:this.state.subject7,
+            marks1 : this.state.marks1,
+            marks2:this.state.marks2,
+            marks3:this.state.marks3,
+            marks4 : this.state.marks4,
+            marks5:this.state.marks5,
+            marks6 : this.state.marks6,
+            marks7:this.state.marks7,
+
+        }
+        console.log(this.state);
+        return <Success/>;
+    }
 
     // Proceed to next step
     nextStep = () => {

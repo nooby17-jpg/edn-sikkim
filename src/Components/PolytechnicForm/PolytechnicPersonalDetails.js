@@ -24,7 +24,7 @@ export default class PolytechnicPersonalDetails extends Component {
                             </Link>
                             <Link
                                 color="inherit"
-                                href="/"
+                                href="/notice"
                                 className="BreadcrumbsLink"
                             >
                                 <SpeakerNotesRounded  className="BreadcrumbsIcon"  />
@@ -40,7 +40,7 @@ export default class PolytechnicPersonalDetails extends Component {
                         className="paper"
                     >
 
-                        <Typography color="secondary" variant="h5" className="formHeading">NIOS Personal details</Typography>
+                        <Typography color="secondary" variant="h5" className="formHeading">Polytechnic Personal details</Typography>
                         <br/>
                         <br/>
                         <TextField

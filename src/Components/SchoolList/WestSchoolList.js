@@ -1,6 +1,5 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,7 +11,6 @@ import SchoolSource from "../utils/SchoolSource";
 import {Breadcrumbs, Divider, Link, TextField, Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import {HomeRounded, ListAltRounded} from "@material-ui/icons";
-import JSONDATA from "../../MOCK_DATA.json"
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -32,7 +30,7 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-
+const rows = SchoolSource.WestSikkimSchool
 const useStyles = makeStyles({
     table: {
         maxWidth: 900,
@@ -45,25 +43,12 @@ const useStyles = makeStyles({
         padding: 10,
         width: 240,
 
-    },
-    buttonGroup:{
-        display: "flex",
-        margin: "auto",
-        textAlign: "center",
-        alignContent: "center",
-    },
-    footerlist:{
-        fontFamily: "'Oswald', serif",
-        fontSize: 14,
-        paddingLeft: 20,
     }
 });
 
-
-export default function CheckYourReg() {
+export default function WestSchoolList() {
     const classes = useStyles();
     const [searchTerm, setSearchTerm] = useState("")
-
     return (
         <>
             <div className="breadcrumbAlign">
@@ -74,17 +59,17 @@ export default function CheckYourReg() {
                     </Link>
                     <Link
                         color="textPrimary"
-                        href="/eastschoollist"
+                        href="/westschoollist"
                         className="BreadcrumbsLink"
                     >
                         <ListAltRounded  className="BreadcrumbsIcon"  />
-                        East Sikkim School List
+                        West Sikkim School List
                     </Link>
                 </Breadcrumbs>
             </div>
             <TableContainer component={Paper} className={classes.containerAlign}>
                 <br/>
-                <Typography variant="h4" className="formHeading">CHECK YOUR REGISTRATION</Typography>
+                <Typography variant="h4" className="formHeading">WEST SIKKIM SCHOOL LIST</Typography>
                 <br/>
                 <Divider/>
                 <br/>
@@ -92,7 +77,7 @@ export default function CheckYourReg() {
                     className={classes.searchBar}
                     type="text"
                     variant="outlined"
-                    placeholder="Search Roll Number..."
+                    placeholder="Search School..."
                     onChange={(event) => {
                         setSearchTerm(event.target.value);
                     }}
@@ -100,26 +85,19 @@ export default function CheckYourReg() {
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell >Sl. No.</StyledTableCell>
-                            <StyledTableCell >Student Name</StyledTableCell>
-                            <StyledTableCell >Father Name </StyledTableCell>
-                            <StyledTableCell >Student Email</StyledTableCell>
+                            <StyledTableCell >School Name</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {JSONDATA.filter((val) => {
+                        {rows.filter((val) => {
                             if (searchTerm == "") {
-                                return null
-                            } else if (val.credit.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                return val
+                            } else if (val.schoolName.toLowerCase().includes(searchTerm.toLowerCase())) {
                                 return val
                             }
-                        }).map((val, key) => (
-                            <StyledTableRow key={val.id}>
-                                <StyledTableCell >{val.id}</StyledTableCell>
-                                <StyledTableCell >{val.full_name}</StyledTableCell>
-                                <StyledTableCell >{val.company}</StyledTableCell>
-                                <StyledTableCell >{val.email}</StyledTableCell>
-
+                        }).map((row) => (
+                            <StyledTableRow key={row.name}>
+                                <StyledTableCell >{row.schoolName}</StyledTableCell>
                             </StyledTableRow>
                         ))
                         }
@@ -128,18 +106,14 @@ export default function CheckYourReg() {
                 <br/>
                 <Divider/>
                 <br/>
-                <Typography variant="subtitle2" className={classes.footerlist}>
-                    Not register yet ?
-                    <br/>
-                    Looking for admission links ?
-                    <br/>
-                    click on link below to register yourself.
-                </Typography>
+                <Typography variant="subtitle2" className="footerlist">Check different district school's list by clicking the button below:</Typography>
                 <br/>
                 <Divider/>
                 <br/>
-                <div className={classes.buttonGroup}>
-                    <Button href="/notice" variant="contained" color="primary" className={classes.buttonGroup}>Register yourself here !</Button>
+                <div className="buttonGroup">
+                    <Button href="/eastschoollist" variant="contained"  color="primary">East Sikkim School</Button>
+                    <Button href="/southschoollist" variant="contained" color="primary">South Sikkim School</Button>
+                    <Button href="/northschoollist" variant="contained" color="primary">North Sikkim School</Button>
                 </div>
                 <br/>
             </TableContainer>

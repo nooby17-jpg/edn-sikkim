@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {TextField,Paper,    Divider, Grid} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,6 +11,34 @@ import Typography from '@material-ui/core/Typography';
 import acs from '../../Assets/Images/acs.jpg'
 import mmm from '../../Assets/Images/m.jpg'
 import con from '../../Assets/Images/undraw_contact_us_15o2.svg'
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import { useSpring, animated } from 'react-spring';
+
+
+const Fade = React.forwardRef(function Fade(props, ref) {
+    const { in: open, children, onEnter, onExited, ...other } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        onStart: () => {
+            if (open && onEnter) {
+                onEnter();
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+                onExited();
+            }
+        },
+    });
+
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {children}
+        </animated.div>
+    );
+});
 
 const useStyles =makeStyles((theme) => ({
     root: {
@@ -24,14 +53,24 @@ const useStyles =makeStyles((theme) => ({
         maxWidth: 700,
         margin:"auto"
     },
+    MessagePaper:{
+        padding: theme.spacing(2),
+        maxWidth: 800,
+        margin:"auto"
+    },
     ContactPaper:{
         padding: theme.spacing(2),
         maxWidth: 500,
         margin: "auto"
 
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     containerAlign:{
-        marginTop: 120
+        marginTop: 100
     },
     ImageDiv:{
       display: "flex",
@@ -50,7 +89,7 @@ const useStyles =makeStyles((theme) => ({
     },
     Text:{
         textAlign: "center",
-        marginTop: 200
+        marginTop: 200,
     },
     ImageBody:{
         textAlign: "center",
@@ -68,19 +107,35 @@ const useStyles =makeStyles((theme) => ({
         padding: theme.spacing(1),
         fontFamily:"'Oswald', sans-serif",
         fontSize: 24,
-        fontWeight:700
+        fontWeight:700,
+        textAlign: "center",
+        backgroundColor: "#19709d"
     }
 }));
 
-
+Fade.propTypes = {
+    children: PropTypes.element,
+    in: PropTypes.bool.isRequired,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+};
 export default function Content(){
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
         return(
             <>
                 <Grid container className={classes.containerAlign}>
                     <Grid item xs={12} lg={12}>
-                        <Paper className={classes.Paper}>
+                        <Paper className={classes.MessagePaper}>
                             <div className={classes.MessageTop}>
                                 <Grid item xs={3} lg={3}>
                                     <Card>
@@ -145,6 +200,7 @@ export default function Content(){
                                     which has led us to follow lockdown in our State as per
                                     the guidelines of disaster management authority.
                                     <br/>
+                                    <br/>
                                     Since the class X results of school have been already
                                     declared by all boards, ensuring continuity of teaching
                                     learning process without any obstacle is our priority.
@@ -153,6 +209,7 @@ export default function Content(){
                                     The authorities in the Education Department have decided that apart
                                     from the ongoing online classes, admission in
                                     Class XI should also be done online.
+                                    <br/>
                                     <br/>
                                     Keeping all the facts in view, the Education Department has
                                     initiated the process of online admission in all the senior
@@ -169,16 +226,40 @@ export default function Content(){
                 <Divider/>
                 <br/>
 
-                <Grid item xs={12}  lg={12}>
+                <Grid item xs={12}  lg={12} className={classes.Paper}>
                     <Paper className={classes.Paper}>
                         <Card>
                             <Typography className={classes.contactHeading} variant="h4" color="textPrimary">TO - DO:</Typography>
                             <Divider/>
                             <br/>
-
                             <div className="buttonGroup">
-                                <Button href="/" variant="contained"  color="primary">View School List</Button>
-                                <Button href="/" variant="contained"  color="primary">Check Your Registration</Button>
+                                <Button color="primary" variant="outlined" onClick={handleOpen}>
+                                    View School's List
+                                </Button>
+                                <Modal
+                                    aria-labelledby="spring-modal-title"
+                                    aria-describedby="spring-modal-description"
+                                    className={classes.modal}
+                                    open={open}
+                                    onClose={handleClose}
+                                    closeAfterTransition
+                                    BackdropComponent={Backdrop}
+                                    BackdropProps={{
+                                        timeout: 500,
+                                    }}
+                                >
+                                    <Fade in={open}>
+                                        <div className={classes.Paper}>
+                                            <div className="buttonGroup">
+                                                <Button href="/eastschoollist" variant="contained"  color="primary">East Sikkim School</Button>
+                                                <Button href="/westschoollist" variant="contained"  color="primary">West Sikkim School</Button>
+                                                <Button href="/southschoollist" variant="contained" color="primary">South Sikkim School</Button>
+                                                <Button href="/northschoollist" variant="contained" color="primary">North Sikkim School</Button>
+                                            </div>
+                                        </div>
+                                    </Fade>
+                                </Modal>
+                                <Button href="/searchstudent" variant="outlined"  color="primary">Check Your Registration</Button>
                                 <Button href="/notice" variant="contained" color="primary">Admission Link</Button>
                             </div>
                             <br/>
@@ -191,65 +272,64 @@ export default function Content(){
                 <br/>
 
 
-                <Grid item xs={12} className={classes.Paper} >
+                <Grid item xs={12} className={classes.Paper}>
                     <Paper  elevation={2} className={classes.Paper}>
-                        <Typography className={classes.contactHeading} variant="h4" color="textPrimary">Contact Us:</Typography>
-                        <br/>
-                        <Divider/>
-                        <br/>
-                        <div className={classes.ContactPaper}>
-                            <Grid container item>
-                                <TextField
-                                    require={true}
-                                    id='name'
-                                    label='Name'
-                                    variant='outlined'
-                                    autoComplete='new-name'
-                                    fullWidth
-                                />
-                            </Grid>
-                            <br />
-                            <br />
-                            <Grid container item>
-                                <TextField
-                                    required
-                                    id='email'
-                                    label='Email'
-                                    variant='outlined'
-                                    autoComplete='new-email'
-                                    fullWidth
-                                />
-                            </Grid>
-                            <br />
-                            <br />
-                            <Grid container item>
-                                <TextField
-                                    required
-                                    id='message'
-                                    label='Message'
-                                    fullWidth
-                                    multiline
-                                    rows={4}
-                                    variant='outlined'
-                                />
-                            </Grid>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <Grid container item>
-                                <Button
-                                    variant='contained'
-                                    fullWidth
-                                    color='primary'
-                                >
-                                    Submit
-                                </Button>
-                            </Grid>
-                        </div>
-                        <div className={classes.ImageDiv}>
-                            <img src={con} alt="con" className={classes.contactImage}/>
-                        </div>
+                        <Card>
+                            <Typography className={classes.contactHeading} variant="h4" color="textPrimary">Contact Us:</Typography>
+                            <Divider/>
+                            <br/>
+                            <div className={classes.ContactPaper}>
+                                <Grid container item>
+                                    <TextField
+                                        require={true}
+                                        id='name'
+                                        label='Name'
+                                        variant='outlined'
+                                        autoComplete='new-name'
+                                        fullWidth
+                                    />
+                                </Grid>
+                                <br />
+                                <br />
+                                <Grid container item>
+                                    <TextField
+                                        required
+                                        id='email'
+                                        label='Email'
+                                        variant='outlined'
+                                        autoComplete='new-email'
+                                        fullWidth
+                                    />
+                                </Grid>
+                                <br />
+                                <br />
+                                <Grid container item>
+                                    <TextField
+                                        required
+                                        id='message'
+                                        label='Message'
+                                        fullWidth
+                                        multiline
+                                        rows={4}
+                                        variant='outlined'
+                                    />
+                                </Grid>
+                                <br />
+                                <br />
+                                <Grid container item>
+                                    <Button
+                                        variant='contained'
+                                        fullWidth
+                                        color='primary'
+                                    >
+                                        Submit
+                                    </Button>
+                                </Grid>
+                            </div>
+                            <div className={classes.ImageDiv}>
+                                <img src={con} alt="con" className={classes.contactImage}/>
+                            </div>
+                        </Card>
                     </Paper>
                 </Grid>
             </>
